@@ -1,0 +1,68 @@
+<mvc:View controllerName="com.sap.demokituitable.controller.RowHighlights"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m" xmlns:ui="sap.ui.table" xmlns:u="sap.ui.unified" xmlns:c="sap.ui.core">
+    <Page id="RowHighlightsPage" title="RowHighlights" showNavButton="true" navButtonPress="onNavBack">
+        <content>
+            <ui:Table id="RowHighlights" selectionMode="MultiToggle" rows="{/Products}" visibleRowCount="7">
+                <ui:extension>
+                    <OverflowToolbar >
+                        <Title text="Products"></Title>
+                        <ToolbarSpacer/>
+                        <Label text="Selection Mode:"/>
+                        <Select selectedKey="MultiToggle" change="onSelectionModeChange">
+                            <c:Item key="MultiToggle" text="MultiToggle"/>
+                            <c:Item key="Single" text="Single"/>
+                            <c:Item key="None" text="None"/>
+                        </Select>
+                        <ToggleButton text="Toggle Highlights" pressed="true" press="onHighlightToggle"/>
+						<ToggleButton text="Toggle Alternate Row Colors" press="onAlternateToggle"/>
+                    </OverflowToolbar>
+                </ui:extension>
+                <ui:rowSettingsTemplate>
+					<ui:RowSettings highlight="{path: 'Discontinued', formatter: '.formatHighlight'}"/>
+                    <!-- other way to bind the highlight property -->
+                    <!-- <ui:RowSettings highlight="{Discontinued}"/> -->
+				</ui:rowSettingsTemplate>
+                <ui:columns>
+                    <ui:Column id="RowHighlightsProdName">
+                        <Label text="Product Name"/>
+                        <ui:template>
+                            <Text text="{ProductName}" wrapping="false" />
+                        </ui:template>
+                    </ui:Column>
+                    <ui:Column id="RowHighlightsProdId">
+                        <Label text="ProductID"/>
+                        <ui:template>
+                            <Text text="{ProductID}" wrapping="false" />
+                        </ui:template>
+                    </ui:Column>
+                    <ui:Column id="RowHighlightsSupplierID">
+                        <Label text="Supplier ID"/>
+                        <ui:template>
+                            <Text text="{SupplierID}" wrapping="false" />
+                        </ui:template>
+                    </ui:Column>
+                    <ui:Column id="RowHighlightsDiscontinued" sortProperty="Discontinued" filterProperty="Discontinued">
+                        <Label text="Discontinued"/>
+                        <ui:template>
+                            <Text id="idDiscontinued" text="{Discontinued}" wrapping="false" />
+                        </ui:template>
+                    </ui:Column>
+                    <ui:Column id="RowHighlightsUnitPrice">
+                        <Label text="UnitPrice"/>
+                        <ui:template>
+                        <Text text="{UnitPrice}" wrapping="false" />
+                            <!-- <Text text="{path: 'UnitPrice', type: 'sap.ui.model.type.Float'}" wrapping="false" /> -->
+                        </ui:template>
+                    </ui:Column>
+                </ui:columns>
+            </ui:Table>
+        </content> 
+        <footer>
+            <OverflowToolbar >
+                <ToolbarSpacer/>
+                <Button text="Move to next page" press="onPressNext"></Button>
+            </OverflowToolbar>
+        </footer>
+    </Page>
+</mvc:View>

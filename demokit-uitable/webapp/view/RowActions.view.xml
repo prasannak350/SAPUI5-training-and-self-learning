@@ -1,0 +1,57 @@
+<mvc:View controllerName="com.sap.demokituitable.controller.RowActions"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m" xmlns:ui="sap.ui.table" xmlns:u="sap.ui.unified" xmlns:c="sap.ui.core">
+    <Page id="RowActionsPage" title="RowActions" showNavButton="true" navButtonPress="onNavBack">
+        <content>
+            <ui:Table id="RowActions" selectionMode="MultiToggle" rows="{/Invoices}" visibleRowCount="7">
+                <ui:extension>
+                    <OverflowToolbar >
+                        <Title text="Invoices"></Title>
+                        <ToolbarSpacer ></ToolbarSpacer>
+                        <Select id="select" items="{modes>/items}" selectedKey="Navigation" change="onBehaviourModeChange">
+							<c:Item key="{modes>key}" text="{modes>text}"/>
+						</Select>
+                    </OverflowToolbar>
+                </ui:extension>
+                <ui:columns>
+                    <ui:Column id="RowActionsProdName">
+                        <Label text="Product Name"/>
+                        <ui:template>
+                            <Text text="{ProductName}" wrapping="false" />
+                        </ui:template>
+                    </ui:Column>
+                    <ui:Column id="RowActionsProdId">
+                        <Label text="ProductID"/>
+                        <ui:template>
+                            <Text text="{ProductID}" wrapping="false" />
+                        </ui:template>
+                    </ui:Column>
+                    <ui:Column id="RowActionsShipperName">
+                        <Label text="Shipper Name"/>
+                        <ui:template>
+                            <Text text="{ShipperName}" wrapping="false" />
+                        </ui:template>
+                    </ui:Column>
+                    <ui:Column id="RowActionsQuantity">
+                        <Label text="Quantity"/>
+                        <ui:template>
+                            <Text text="{Quantity}" wrapping="false" />
+                        </ui:template>
+                    </ui:Column>
+                    <ui:Column id="RowActionsUnitPrice">
+                        <Label text="UnitPrice"/>
+                        <ui:template>
+                            <Text text="{path: 'UnitPrice', type: 'sap.ui.model.type.Float'}" wrapping="false" />
+                        </ui:template>
+                    </ui:Column>
+                </ui:columns>
+            </ui:Table>
+        </content> 
+        <footer>
+            <OverflowToolbar >
+                <ToolbarSpacer/>
+                <Button text="Move to next page" press="onPressNext"></Button>
+            </OverflowToolbar>
+        </footer>
+    </Page>
+</mvc:View>

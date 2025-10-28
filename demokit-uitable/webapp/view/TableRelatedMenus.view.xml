@@ -1,0 +1,75 @@
+<mvc:View controllerName="com.sap.demokituitable.controller.TableRelatedMenus"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m" xmlns:ui="sap.ui.table" xmlns:u="sap.ui.unified">
+    <Page id="tableRelatedMenus" title="Table Related Menus" showNavButton="true" navButtonPress="onNavBack">
+        <content>
+            <ui:Table id="tableMenus" selectionMode="MultiToggle" rows="{path: '/Invoices', parameters:{$top : 10}}" showColumnVisibilityMenu="{menuPanel>/showVisibilityMenuEntry}" enableColumnFreeze="{menuPanel>/showFreezeMenuEntry}" enableCellFilter="{menuPanel>/enableCellFilter}" columnSelect="onColumnSelect" cellContextmenu="onProductIdCellContextMenu">
+                <ui:extension>
+                    <OverflowToolbar >
+                        <Title id="newTitle" text="Invoices"></Title>
+                        <ToolbarSpacer/>
+                        <Label text="Use headerMenu association:" labelFor="switchHeaderMenu"/>
+                        <Switch id="switchHeaderMenu" state="false" customTextOn="Yes" customTextOff="No" change="onSwitchHeaderMenu"/>
+                        <ToggleButton icon="sap-icon://show" tooltip="Enable / Disable Visibility Menu Entries" pressed="{menuPanel>/showVisibilityMenuEntry}"/>
+                        <ToggleButton icon="sap-icon://resize-horizontal" tooltip="Enable / Disable Freezing Menu Entries" pressed="{menuPanel>/showFreezeMenuEntry}"/>
+                        <ToggleButton icon="sap-icon://filter" tooltip="Enable / Disable Cell Filter" pressed="{menuPanel>/enableCellFilter}"/>
+                        <ToggleButton icon="sap-icon://menu" tooltip="Enable / Disable Custom Context Menu" press="onToggleContextMenu"/>
+                    </OverflowToolbar>
+                </ui:extension>
+                <ui:columns>
+                    <ui:Column id="tableProdName" width="20rem" sortProperty="ProductName" filterProperty="ProductName" showFilterMenuEntry="true" showSortMenuEntry="true">
+                        <Label text="Product Name"/>
+                        <ui:template>
+                            <Text text="{ProductName}" wrapping="false" />
+                        </ui:template>
+                    </ui:Column>
+                    <ui:Column id="tableProdId" width="20rem" sortProperty="ProductID" filterProperty="ProductID" filterType="sap.ui.model.type.Integer">
+                        <Label text="ProductID"/>
+                        <ui:template>
+                            <Text text="{ProductID}" wrapping="false" />
+                        </ui:template>
+                    </ui:Column>
+                    <ui:Column id="tableShipperName" width="50rem" columnMenuOpen="onColumnMenuOpen">
+                        <Label text="Shipper Name"/>
+                        <ui:template>
+                            <Text text="{ShipperName}" wrapping="false" />
+                        </ui:template>
+                    </ui:Column>
+                    <ui:Column id="tableQuantity" width="30rem" sortProperty="Quantity">
+                        <Label text="Quantity"/>
+                        <ui:template>
+                            <Text text="{Quantity}" wrapping="false" />
+                        </ui:template>
+                        <ui:menu>
+                            <u:Menu>
+                                <u:items>
+									<u:MenuItem
+										text="My custom menu entry"
+										select="onQuantityCustomItemSelect"
+										/>
+									<u:MenuItem
+										text="Sort"
+										select="onQuantitySort"
+										icon="sap-icon://sort"
+										/>
+								</u:items>
+                            </u:Menu>
+                        </ui:menu>
+                    </ui:Column>
+                    <ui:Column id="tableUnitPrice" width="20rem">
+                        <Label text="UnitPrice"/>
+                        <ui:template>
+                            <Text text="{path: 'UnitPrice', type: 'sap.ui.model.type.Float'}" wrapping="false" />
+                        </ui:template>
+                    </ui:Column>
+                </ui:columns>
+            </ui:Table>
+        </content> 
+        <footer>
+            <OverflowToolbar >
+                <ToolbarSpacer/>
+                <Button text="Move to next page" press="onPressNext"></Button>
+            </OverflowToolbar>
+        </footer>
+    </Page>
+</mvc:View>

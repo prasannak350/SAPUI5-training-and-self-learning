@@ -1,0 +1,77 @@
+<mvc:View controllerName="com.sap.demokituitable.controller.Aggregations"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m" xmlns:ui="sap.ui.table" xmlns:core="sap.ui.core">
+    <Page id="page2" title="Aggregations" showNavButton="true" navButtonPress="onNavBack">
+        <content>
+            <ui:Table id="aggregationTable" selectionMode="MultiToggle" rows="{path: '/Invoices', parameters:{$top : 10}}">
+                <ui:extension>
+                    <HBox >
+                        <items>
+                            <core:Icon src="sap-icon://customer-order-entry" size="1.5rem"/>
+                            <Title text="Customer Orders" titleStyle="H4" class="sapUiTinyMarginBeginEnd"/>
+                        </items>
+                    </HBox>
+                    <OverflowToolbar >
+                        <Title text="Invoices"></Title>
+                        <ToolbarSpacer ></ToolbarSpacer>
+                        <SearchField id="idSearchFiled" placeholder="Filter" search="handleTxtFilter" width="15rem"></SearchField>
+                    </OverflowToolbar>
+                    <FacetFilter id="facetFilter" type="Simple" showReset="true" showPopoverOKButton="true" reset="handleFacetFilterReset">
+                        <FacetFilterList title="ShipperName" multiSelect="true" listClose="handleListClose" items="{/Invoices}">
+                            <items>
+                                <FacetFilterItem text="{ShipperName}" key="{ShipperName}"/>
+                            </items>
+                        </FacetFilterList>
+                        <FacetFilterList title="ProductID" multiSelect="true" key="ProductID" listClose="handleListClose" items="{/Invoices}">
+                            <items>
+                                <FacetFilterItem text="{ProductID}" key="{ProductID}"/>
+                            </items>
+                        </FacetFilterList>
+                    </FacetFilter>
+                </ui:extension>
+                <!-- If there is no data then this text will be displayed in the table(suppose we filtered with some random name which is not there in the table) -->
+                <ui:noData>
+                    <Link class="sapUiMediumMargin" text="No Data found. Press here to reset all filters." press="clearFilters"/>
+                </ui:noData>
+                <ui:columns>
+                    <ui:Column id="prodName" width="11rem">
+                        <Label text="Product Name"/>
+                        <ui:template>
+                            <Text text="{ProductName}" wrapping="false" />
+                        </ui:template>
+                    </ui:Column>
+                    <ui:Column id="prodId" width="11rem" filterType="sap.ui.model.type.Integer">
+                        <Label text="ProductID"/>
+                        <ui:template>
+                            <Text text="{ProductID}" wrapping="false" />
+                        </ui:template>
+                    </ui:Column>
+                    <ui:Column id="shipperName" width="11rem">
+                        <Label text="Shipper Name"/>
+                        <ui:template>
+                            <Text text="{ShipperName}" wrapping="false" />
+                        </ui:template>
+                    </ui:Column>
+                    <ui:Column id="quantity1" width="11rem">
+                        <Label text="Quantity"/>
+                        <ui:template>
+                            <Text text="{Quantity}" wrapping="false" />
+                        </ui:template>
+                    </ui:Column>
+                    <ui:Column id="unitPrice1" width="11rem">
+                        <Label text="UnitPrice"/>
+                        <ui:template>
+                            <Text text="{path: 'UnitPrice', type: 'sap.ui.model.type.Float'}" wrapping="false" />
+                        </ui:template>
+                    </ui:Column>
+                </ui:columns>
+            </ui:Table>
+        </content>
+         <footer>
+            <OverflowToolbar >
+                <ToolbarSpacer/>
+                <Button text="Move to next page" press="onPressNext"></Button>
+            </OverflowToolbar>
+        </footer>
+    </Page>
+</mvc:View>

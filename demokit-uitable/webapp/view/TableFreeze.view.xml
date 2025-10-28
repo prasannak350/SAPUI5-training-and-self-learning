@@ -1,0 +1,58 @@
+<mvc:View controllerName="com.sap.demokituitable.controller.TableFreeze"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m" xmlns:ui="sap.ui.table" xmlns:u="sap.ui.unified">
+    <Page id="tableFreezePage" title="Table Freeze" showNavButton="true" navButtonPress="onNavBack">
+        <content>
+            <ui:Table id="tableFreeze" selectionMode="MultiToggle" rows="{path: '/Invoices', parameters:{$top : 10}}">
+                <ui:extension>
+                    <OverflowToolbar >
+                        <Title text="Invoices"></Title>
+                        <ToolbarSpacer/>
+                        <Input id="inputColumn" width="20%" placeholder="fixed column count" tooltip="fixed column count"/>
+                        <Input id="inputRow" width="20%" placeholder="fixed row count" tooltip="fixed row count"/>
+                        <Input id="inputButtomRow" width="20%" placeholder="fixed bottom row count" tooltip="fixed bottom row count"/>
+                        <Button text="Apply" press="buttonPress"/>
+                    </OverflowToolbar>
+                </ui:extension>
+                <ui:columns>
+                    <ui:Column id="tableFreezeProdName" width="20rem" sortProperty="ProductName" filterProperty="ProductName" showFilterMenuEntry="true" showSortMenuEntry="true">
+                        <Label text="Product Name"/>
+                        <ui:template>
+                            <Text text="{ProductName}" wrapping="false" />
+                        </ui:template>
+                    </ui:Column>
+                    <ui:Column id="tableFreezeProdId" width="20rem" sortProperty="ProductID" filterProperty="ProductID" filterType="sap.ui.model.type.Integer">
+                        <Label text="ProductID"/>
+                        <ui:template>
+                            <Text text="{ProductID}" wrapping="false" />
+                        </ui:template>
+                    </ui:Column>
+                    <ui:Column id="tableFreezeShipperName" width="50rem" columnMenuOpen="onColumnMenuOpen">
+                        <Label text="Shipper Name"/>
+                        <ui:template>
+                            <Text text="{ShipperName}" wrapping="false" />
+                        </ui:template>
+                    </ui:Column>
+                    <ui:Column id="tableFreezeQuantity" width="30rem" sortProperty="Quantity">
+                        <Label text="Quantity"/>
+                        <ui:template>
+                            <Text text="{Quantity}" wrapping="false" />
+                        </ui:template>
+                    </ui:Column>
+                    <ui:Column id="tableFreezeUnitPrice" width="20rem">
+                        <Label text="UnitPrice"/>
+                        <ui:template>
+                            <Text text="{path: 'UnitPrice', type: 'sap.ui.model.type.Float'}" wrapping="false" />
+                        </ui:template>
+                    </ui:Column>
+                </ui:columns>
+            </ui:Table>
+        </content> 
+        <footer>
+            <OverflowToolbar >
+                <ToolbarSpacer/>
+                <Button text="Move to next page" press="onPressNext"></Button>
+            </OverflowToolbar>
+        </footer>
+    </Page>
+</mvc:View>

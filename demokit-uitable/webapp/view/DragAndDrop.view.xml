@@ -1,0 +1,146 @@
+<mvc:View controllerName="com.sap.demokituitable.controller.DragAndDrop"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m" xmlns:ui="sap.ui.table" xmlns:u="sap.ui.unified" xmlns:c="sap.ui.core" xmlns:dnd="sap.ui.core.dnd">
+    <Page id="DragAndDropPage" title="DragAndDrop" showNavButton="true" navButtonPress="onNavBack">
+        <content>
+            <HBox renderType="Bare">
+                <ui:Table id="DragAndDropTable1" selectionMode="Single" rows="{/Invoices}" visibleRowCount="10">
+                    <ui:extension>
+                        <OverflowToolbar >
+                            <Title text="Available Products"/>
+                        </OverflowToolbar>
+                    </ui:extension>
+                    <ui:columns>
+                        <ui:Column id="DragAndDropProdName">
+                            <Label text="Product Name"/>
+                            <ui:template>
+                                <Text text="{ProductName}" wrapping="false" />
+                            </ui:template>
+                        </ui:Column>
+                        <ui:Column id="DragAndDropShipperName">
+                            <Label text="Shipper Name"/>
+                            <ui:template>
+                                <Text text="{ShipperName}" wrapping="false" />
+                            </ui:template>
+                        </ui:Column>
+                        <ui:Column id="DragAndDropQuantity">
+                            <Label text="Quantity"/>
+                            <ui:template>
+                                <Text text="{Quantity}" wrapping="false" />
+                            </ui:template>
+                        </ui:Column>
+                    </ui:columns>
+                    <ui:dragDropConfig>
+                        <dnd:DragInfo
+							groupName="moveToTable2"
+							sourceAggregation="rows"
+							dragStart="onDragStart" />
+						<dnd:DropInfo
+							groupName="moveToTable1"
+							drop="onDropTable1" />
+                    </ui:dragDropConfig>
+                </ui:Table>
+                <VBox justifyContent="Center" class="sapUiTinyMarginBeginEnd">
+					<Button
+						class="sapUiTinyMarginBottom"
+						icon="sap-icon://navigation-right-arrow"
+						tooltip="Move to selected"
+						press="moveToTable2"/>
+					<Button
+						icon="sap-icon://navigation-left-arrow"
+						tooltip="Move to available"
+						press="moveToTable1"/>
+				</VBox>
+                <ui:Table id="DragAndDropTable2" selectionMode="Single" rows="{path: '/Invoices', filters:{path: 'Quantity', operator: 'EQ', value1: '0'}}" visibleRowCount="10" noData="Please drag-and-drop products here.">
+                    <ui:extension>
+                        <OverflowToolbar >
+                            <Title text="Selected Products"/>
+                            <ToolbarSpacer/>
+							<Button
+								icon="sap-icon://navigation-up-arrow"
+								tooltip="Move up"
+								press="moveUp"/>
+							<Button
+								icon="sap-icon://navigation-down-arrow"
+								tooltip="Move down"
+								press="moveDown"/>
+                        </OverflowToolbar>
+                    </ui:extension>
+                    <ui:columns>
+                        <ui:Column >
+                            <Label text="Product Name"/>
+                            <ui:template>
+                                <Text text="{ProductName}" wrapping="false" />
+                            </ui:template>
+                        </ui:Column>
+                        <ui:Column >
+                            <Label text="Shipper Name"/>
+                            <ui:template>
+                                <Text text="{ShipperName}" wrapping="false" />
+                            </ui:template>
+                        </ui:Column>
+                        <ui:Column >
+                            <Label text="Quantity"/>
+                            <ui:template>
+                                <Text text="{Quantity}" wrapping="false" />
+                            </ui:template>
+                        </ui:Column>
+                    </ui:columns>
+                    <ui:dragDropConfig>
+						<dnd:DragInfo
+							groupName="moveToTable1"
+							sourceAggregation="rows"
+							dragStart="onDragStart" />
+						<dnd:DropInfo
+							groupName="moveToTable2"
+							targetAggregation="rows"
+							dropPosition="Between"
+							drop="onDropTable2" />
+						<dnd:DragDropInfo
+							sourceAggregation="rows"
+							targetAggregation="rows"
+							dropPosition="Between"
+							dragStart="onDragStart"
+							drop="onDropTable2" />
+					</ui:dragDropConfig>
+                </ui:Table>
+            </HBox>
+
+            <!-- this is extra not from the demokit -->
+            <Panel expandable="true" expanded="true" class="sapUiTinyMarginTop">
+                <headerToolbar>
+					<Toolbar height="2rem">
+						<Title text="Conditions" />
+						<ToolbarSpacer />
+					</Toolbar>
+				</headerToolbar>
+                <content>
+                    <HBox >
+                        <Panel expanded="true">
+                            <headerToolbar>
+								<Toolbar height="2rem">
+									<Title text="Filter Criteria" />
+									<ToolbarSpacer />
+								</Toolbar>
+							</headerToolbar>
+                            <content>
+                                <List items="{/Invoices}" growing="true" growingThreshold="5">
+                                    <StandardListItem title="{ProductName}"></StandardListItem>
+                                </List>
+                            </content>
+                        </Panel>
+                        <ScrollContainer vertical="true" width="100%">
+                            <VBox width="100%">
+								<Panel expanded="true" width="100%">
+									<content>
+										<Text text="Drag and Drop Filter Criteria" />
+									</content>
+								</Panel>
+							</VBox>
+                        </ScrollContainer>
+                    </HBox>
+                </content>
+            </Panel>
+        </content> 
+    </Page>
+</mvc:View>

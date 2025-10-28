@@ -1,0 +1,73 @@
+<mvc:View controllerName="com.sap.demokituitable.controller.Resizing"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m" xmlns:ui="sap.ui.table" xmlns:u="sap.ui.unified">
+    <Page id="ResizingPage" title="Resizing" showNavButton="true" navButtonPress="onNavBack">
+        <content>
+            <ui:Table id="Resizing" selectionMode="MultiToggle" rows="{/Invoices}" visibleRowCount="7" minAutoRowCount="5" visibleRowCountMode="{menuPanel>/visibleRowCountMode}" columnResize="onColumnResize">
+                <ui:extension>
+                    <OverflowToolbar >
+                        <Title text="Invoices"></Title>
+                    </OverflowToolbar>
+                </ui:extension>
+                <ui:columns>
+                    <ui:Column id="ResizingProdName" width="{menuPanel>/widths/productName}" filterProperty="ProductName" resizable="true" autoResizable="true">
+                        <Label text="Product Name"/>
+                        <ui:template>
+                            <Text text="{ProductName}" wrapping="false" />
+                        </ui:template>
+                    </ui:Column>
+                    <ui:Column id="ResizingProdId" width="{menuPanel>/widths/Id}" filterProperty="ProductID" filterType="sap.ui.model.type.Integer" resizable="true">
+                        <Label text="ProductID"/>
+                        <ui:template>
+                            <Text text="{ProductID}" wrapping="false" />
+                        </ui:template>
+                    </ui:Column>
+                    <ui:Column id="ResizingShipperName" width="{menuPanel>/widths/shipperName}" flexible="false" resizable="false">
+                        <Label text="Shipper Name"/>
+                        <ui:template>
+                            <Text text="{ShipperName}" wrapping="false" />
+                        </ui:template>
+                    </ui:Column>
+                    <ui:Column id="ResizingQuantity" width="{menuPanel>/widths/quantity}" resizable="false">
+                        <Label text="Quantity"/>
+                        <ui:template>
+                            <Text text="{Quantity}" wrapping="false" />
+                        </ui:template>
+                    </ui:Column>
+                    <ui:Column id="ResizingUnitPrice" width="{menuPanel>/widths/price}">
+                        <Label text="UnitPrice"/>
+                        <ui:template>
+                            <Text text="{path: 'UnitPrice', type: 'sap.ui.model.type.Float'}" wrapping="false" />
+                        </ui:template>
+                    </ui:Column>
+                </ui:columns>
+            </ui:Table>
+        </content> 
+        <footer>
+            <OverflowToolbar >
+                <Label text="Row Count Mode:" labelFor="rowCountMode"/>
+                    <SegmentedButton id="rowCountMode" selectedKey="{menuPanel>/visibleRowCountMode}">
+                        <items>
+                            <SegmentedButtonItem icon="sap-icon://locked" key="Fixed" tooltip="Fixed"/>
+                            <SegmentedButtonItem icon="sap-icon://restart" key="Auto" tooltip="Auto"/>
+                            <SegmentedButtonItem icon="sap-icon://resize-vertical" key="Interactive" tooltip="Interactive"/>
+                        </items>
+                    </SegmentedButton>
+                    <ToolbarSeparator ></ToolbarSeparator>
+                    <Label text="Column Widths:" labelFor="columnWidths"/>
+                    <SegmentedButton
+                        id="columnWidths"
+                        selectedKey="Static"
+                        selectionChange="onColumnWidthsChange">
+                        <items>
+                            <SegmentedButtonItem icon="sap-icon://color-fill" key="Static" tooltip="Static"/>
+                            <SegmentedButtonItem icon="sap-icon://overlay" key="Flexible" tooltip="Flexible"/>
+                            <SegmentedButtonItem icon="sap-icon://business-objects-mobile" key="Mixed" tooltip="Mixed"/>
+                        </items>
+                    </SegmentedButton>
+                    <ToolbarSpacer/>
+                    <Button text="Move to next page" press="onPressNext"></Button>
+            </OverflowToolbar>
+        </footer>
+    </Page>
+</mvc:View>

@@ -1,0 +1,75 @@
+<mvc:View controllerName="com.sap.demokituitable.controller.SortingFiltering"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m" xmlns:ui="sap.ui.table">
+    <Page id="page" title="Sorting and Filtering">
+        <content>
+        <!-- enableCellFilter helps in filtering with the cells- right click on the cells and filter -->
+            <ui:Table id="table" selectionMode="MultiToggle" rows="{path: '/Invoices', parameters:{$top : 10}}" threshold="0" fixedRowCount="1" fixedColumnCount="1" sort="sortOrderDate" ariaLabelledBy="title" rowsUpdated="onPageScroll" enableCellFilter="true" filter="filterPrice">
+                <ui:extension>
+                    <!-- sorting -->
+                    <OverflowToolbar>
+                        <Title id="title" text="Invoices - Sorting"/> 
+                        <ToolbarSpacer/>
+                        <Button icon="sap-icon://sorting-ranking" tooltip="Sort ascending across Cities and Product Name" press="sortCitiesAndName"/>
+                        <Button icon="sap-icon://sort" tooltip="Sort Cities in addition to current sorting" press="sortCities"/>
+                        <Button icon="sap-icon://decline" tooltip="Clear all sortings" press="clearAllSortings"/>
+                    </OverflowToolbar>
+
+                    <!-- filtering -->
+                    <OverflowToolbar>
+                        <Title id="title1" text="Invoices - Filtering"/>
+                        <ToolbarSpacer/>
+                        <ToggleButton icon="sap-icon://complete" tooltip="Show Berlin City products only" press="toggleCityFilter" pressed="false"/>
+                        <Button icon="sap-icon://decline" tooltip="Clear all filters" press="clearAllFilters"/>
+                        <ToolbarSeparator/>
+                        <SearchField placeholder="Filter" value="" width="15rem" search="filterGlobally"/>
+                    </OverflowToolbar>
+                </ui:extension>
+                <ui:columns>
+                    <ui:Column id="name" width="11rem" sortProperty="ProductName" filterProperty="ProductName">
+                        <Label text="Product Name"/>
+                        <ui:template>
+                            <Text text="{ProductName}" wrapping="false" />
+                        </ui:template>
+                    </ui:Column>
+                    <ui:Column id="city" width="11rem" sortProperty="City" showSortMenuEntry="false" defaultFilterOperator="StartsWith" filterProperty="City">
+                        <Label text="City"/>
+                        <ui:template>
+                            <Text text="{City}" wrapping="false" />
+                        </ui:template>
+                    </ui:Column>
+                    <ui:Column width="9rem">
+                        <Label text="Image"/>
+                        <ui:template>
+                            <Link text="Show Image" href="https://www.accountsportal.com/img/blog/1148/an-introduction-to-invoices-banner.png" target="_blank"/>
+                        </ui:template>
+                    </ui:Column>
+                    <ui:Column id="unitPrice" width="8rem" hAlign="End" sortProperty="UnitPrice" filterProperty="UnitPrice" filterType="sap.ui.model.type.Float">
+                        <Label text="UnitPrice"/>
+                        <ui:template>
+                            <Text text="{path: 'UnitPrice', type: 'sap.ui.model.type.Float'}"/>
+                        </ui:template>
+                    </ui:Column>
+                    <ui:Column id="quantity" width="6rem" hAlign="End" sortProperty="Quantity" filterProperty="Quantity" filterType="sap.ui.model.type.Integer">
+                        <Label text="Quantity"/>
+                        <ui:template>
+                            <Text text="{Quantity}"/>
+                        </ui:template>
+                    </ui:Column>
+                    <ui:Column id="orderDate" width="9rem" sortProperty="OrderDate">
+                        <Label text="Order Date"/>
+                        <ui:template>
+                            <Text text="{path: 'OrderDate', type: 'sap.ui.model.type.Date'}" wrapping="false" />
+                        </ui:template>
+                    </ui:Column>
+                </ui:columns>
+            </ui:Table>
+        </content>
+        <footer>
+            <OverflowToolbar >
+                <ToolbarSpacer/>
+                <Button text="Move to next page" press="onPressNext"></Button>
+            </OverflowToolbar>
+        </footer>
+    </Page>
+</mvc:View>
