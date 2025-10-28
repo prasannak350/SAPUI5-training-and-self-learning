@@ -1,0 +1,38 @@
+<mvc:View controllerName="com.sap.listbindingmasterdetailsapp.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <Page id="page" title="View 1">
+        <headerContent>
+            <Button icon="sap-icon://action" tooltip="Go to next" press="onNext"></Button>
+        </headerContent>
+        <content>
+            <SearchField id="idSearch" search="onSearch"></SearchField>
+            <List id="idList" items="{/fruits}" itemPress="onItemPress" mode="MultiSelect" delete="onItemDelete">
+                <headerToolbar>
+                    <Toolbar>
+                        <ToolbarSpacer />
+                        <Button tooltip="Delete" icon="sap-icon://delete" press="onDeleteItems" />
+                    </Toolbar>
+                </headerToolbar>
+                <items>
+                    <ObjectListItem type="Navigation" title="{name}"
+                    intro="{healthBenefit}" 
+                    number="{price}" numberUnit="{curr}"
+                    icon="{image}">
+                        <attributes>
+                            <ObjectAttribute text="{taste}" title="Type"></ObjectAttribute>
+                        </attributes>
+                        <firstStatus>
+                            <ObjectStatus text="{path : 'availability',
+                            formatter: '.formatter.getStatus'}" state="{
+                                                 path: 'availability',
+                                                 formatter: '.formatter.getStatusText'
+                            }"></ObjectStatus>
+                        </firstStatus>
+                    </ObjectListItem>
+                </items>
+            </List>
+            <!-- <Button id="idBtnNext" text="Next" press="onNext"/> -->
+        </content>
+    </Page>
+</mvc:View>

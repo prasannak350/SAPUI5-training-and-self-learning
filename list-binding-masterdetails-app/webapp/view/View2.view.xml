@@ -1,0 +1,35 @@
+<mvc:View controllerName="com.sap.listbindingmasterdetailsapp.controller.View2"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m" xmlns:core="sap.ui.core" >
+    <Page id="detailPage" title="View 2" showNavButton="true" navButtonPress="onBack">
+        <content>
+            <ObjectHeader title="{name}" icon="{image}"
+                          intro="{healthBenefit}"
+                          number="{price}" numberUnit="{curr}"
+            ></ObjectHeader>
+            <IconTabBar>
+                <items>
+                    <IconTabFilter text="More Info" icon="sap-icon://warning">
+                        <core:Fragment id="a" fragmentName="com.sap.listbindingmasterdetailsapp.fragments.moreInfo" type="XML" />
+                        <!-- <core:Fragment id="b" fragmentName="com.sap.listbindingmasterdetailsapp.fragments.moreInfo" type="XML" />
+                        <core:Fragment id="c" fragmentName="com.sap.listbindingmasterdetailsapp.fragments.moreInfo" type="XML" />
+                        <core:Fragment id="d" fragmentName="com.sap.listbindingmasterdetailsapp.fragments.moreInfo" type="XML" /> -->
+                    </IconTabFilter>
+                    <IconTabFilter text="Suppliers" icon="sap-icon://supplier">
+                        <core:Fragment fragmentName="com.sap.listbindingmasterdetailsapp.fragments.supplier" type="XML" />
+                    </IconTabFilter>
+                    <IconTabFilter text="Cities" icon="sap-icon://home">
+                        <core:Fragment fragmentName="com.sap.listbindingmasterdetailsapp.fragments.cities" type="XML" />
+                    </IconTabFilter>
+                </items>
+            </IconTabBar>
+        </content>
+        <footer>
+            <Toolbar >
+                <ToolbarSpacer ></ToolbarSpacer>
+                <Button text="Save" icon="sap-icon://save" type="Accept" press="onSave"></Button>
+                <Button text="Cancel" icon="sap-icon://cancel" type="Reject" press="onCancel"></Button>
+            </Toolbar>
+        </footer>
+    </Page>
+</mvc:View>
