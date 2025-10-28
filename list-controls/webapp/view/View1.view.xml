@@ -1,0 +1,47 @@
+<mvc:View controllerName="com.sap.listcontrols.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <Page id="page" title="View 1">
+        <headerContent>
+            <Button icon="sap-icon://action" tooltip="Go to next" press="onNext"></Button>
+        </headerContent>
+        <content>
+            <SearchField id="idSearch"></SearchField>
+            <List id="idList">
+                <items>
+                    <!-- DisplayListItem - Just display data on left and right corners -->
+                    <DisplayListItem label="Apple" value="Most powerful antibiotic"></DisplayListItem>
+                    <!-- StandardListItem - Shows the data at top bottom, we can also add image/icon -->
+                    <StandardListItem title="Banana" description="Restores the energy instantly" icon="https://i.pinimg.com/1200x/2e/ba/f0/2ebaf0363abd19aba19c2395b29b6975.jpg"></StandardListItem>
+                    <!-- InputListItem - when we want to accept the input data from user -->
+                    <InputListItem>
+                        <content>
+                            <HBox alignContent="Stretch">
+                                <Label text="How many pineapples you want?" class="sapUiTinyMarginTop"></Label>
+                                <Input width="30%"></Input>
+                            </HBox>
+                        </content>
+                    </InputListItem>
+                    <!-- CustomListItem - when none of list item fullfil my purpose -->
+                    <CustomListItem >
+                        <content>
+                            <HBox alignContent="Stretch" alignItems="Center" class="sapUiMediumMarginBegin">
+                                <Label text="Do you want Cash-on-Delivery?" ></Label>
+                                <Switch class="sapUiMediumMarginBegin"></Switch>
+                            </HBox>
+                        </content>
+                    </CustomListItem>
+                    <!-- ObjectListItem - Display business objects to the user -->
+                    <ObjectListItem title="Pineapple" intro="Amazing for glowing skin" icon="https://img.freepik.com/premium-vector/pineapple-icon-cute-image-isolated-pineapple-vector-illustration_118339-5226.jpg" 
+                                    number="150 Rs." numberUnit="per Kg"></ObjectListItem>
+                    <!-- FeedListItem - social media kind of app -->
+                    <FeedListItem icon="https://hips.hearstapps.com/hmg-prod/images/republican-presidential-candidate-former-president-donald-news-photo-1721157463.jpg" 
+                                text="Thank you everyone for make America great again!" timestamp="18th Nov" sender="Donald Trump"></FeedListItem>
+                    <!-- ActionListItem - create a clickable action -->
+                    <ActionListItem text="Order Now!" press="onNext"></ActionListItem>
+                </items>
+            </List>
+            <!-- <Button id="idBtnNext" text="Next" press="onNext"/> -->
+        </content>
+    </Page>
+</mvc:View>

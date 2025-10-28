@@ -1,0 +1,27 @@
+<mvc:View controllerName="com.sap.listcontrols.controller.View2"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <Page id="page2" title="View 2" showNavButton="true" navButtonPress="onBack">
+        <content>
+            <ObjectHeader title="Litchi" icon="https://www.shutterstock.com/image-vector/tropical-fruit-pair-lychee-icon-260nw-2535777061.jpg"
+                          intro="Peel off to enjoy rich vitamins"
+                          number="360 Rs." numberUnit="Per 100 Gms"
+            ></ObjectHeader>
+
+            <IconTabBar>
+                <items>
+                    <IconTabFilter text="More Info" icon="sap-icon://warning"></IconTabFilter>
+                    <IconTabFilter text="Suppliers" icon="sap-icon://supplier"></IconTabFilter>
+                    <IconTabFilter text="Cities" icon="sap-icon://home"></IconTabFilter>
+                </items>
+            </IconTabBar>
+        </content>
+        <footer>
+            <Toolbar >
+                <ToolbarSpacer ></ToolbarSpacer>
+                <Button text="Save" icon="sap-icon://save" type="Accept" press="onSave"></Button>
+                <Button text="Cancel" icon="sap-icon://cancel" type="Reject" press="onCancel"></Button>
+            </Toolbar>
+        </footer>
+    </Page>
+</mvc:View>
