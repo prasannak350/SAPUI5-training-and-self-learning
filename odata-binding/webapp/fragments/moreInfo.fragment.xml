@@ -1,0 +1,26 @@
+<mvc:FragmentDefinition xmlns:mvc="sap.ui.core" xmlns="sap.m"
+                        xmlns:f="sap.ui.layout.form">
+    <f:SimpleForm id="idFormDetails">
+        <f:content>
+            <mvc:Title text="Product Data"/>
+            <Label text="Name"></Label>
+            <Text text="{ProductID} {ProductName}"></Text>
+            <Label text="Units"></Label>
+            <Text text="{UnitsOnOrder}"></Text>
+            <Label text="Price"></Label>
+            <Text text="{UnitPrice}"></Text>
+            <Label text="Reorder Level"></Label>
+            <Text text="{ReorderLevel}"></Text>
+
+            <mvc:Title text="Supplier Data"/>
+            <Label text="SupplierID"></Label>
+            <Text text="{Supplier/SupplierID}"></Text>
+            <Label text="Contact Name"></Label>
+            <Text text="{Supplier/ContactName}"></Text>
+            <Label text="Address"></Label>
+            <Text text="{Supplier/Address} {Supplier/City} {Supplier/Country}"></Text>
+            <Label text="Phone"></Label>
+            <Text text="{Supplier/Phone}"></Text>
+        </f:content>
+    </f:SimpleForm>
+</mvc:FragmentDefinition>

@@ -1,0 +1,34 @@
+<mvc:View controllerName="com.sap.odatabinding.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <Page id="page" title="View 1">
+        <headerContent>
+            <Button icon="sap-icon://action" tooltip="Go to next" press="onNext"></Button>
+        </headerContent>
+        <content>
+            <SearchField id="idSearch" search="onSearch"></SearchField>
+            <List id="idList" items="{/Products}" selectionChange="onItemPress" mode="SingleSelectMaster" delete="onItemDelete" growing="true" growingThreshold="10">
+                <headerToolbar>
+                    <Toolbar>
+                        <ToolbarSpacer />
+                        <Button tooltip="Delete" icon="sap-icon://delete" press="onDeleteItems" />
+                    </Toolbar>
+                </headerToolbar>
+                <items>
+                    <ObjectListItem type="Navigation" title="{ProductID}"
+                    intro="{ProductName}" 
+                    number="{UnitPrice}"
+                    icon="sap-icon://product">
+                        <attributes>
+                            <ObjectAttribute text="{CategoryID}" title="Type"></ObjectAttribute>
+                        </attributes>
+                        <firstStatus>
+                            <ObjectStatus text="{path : 'Discontinued'}"></ObjectStatus>
+                        </firstStatus>
+                    </ObjectListItem>
+                </items>
+            </List>
+            <!-- <Button id="idBtnNext" text="Next" press="onNext"/> -->
+        </content>
+    </Page>
+</mvc:View>
