@@ -1,0 +1,63 @@
+<mvc:View controllerName="com.sap.demokitmtable.controller.7Table-Editable"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m" xmlns:core="sap.ui.core">
+    <Page id="Editable" title="Table-Editable" showNavButton="true" navButtonPress="onNavBack">
+        <Table id="idEditableTable" inset="true" growing="true" growingThreshold="10" paste="onPaste" alternateRowColors="true">
+            <headerToolbar>
+				<OverflowToolbar>
+                    <Title text="Products" level="H2" />
+                    <ToolbarSpacer />
+                    <Button id="editButton" text="Edit" type="Transparent"
+                        press="onEdit" />
+                    <Button id="saveButton" text="Save" type="Transparent"
+                        press="onSave" visible="false" />
+                    <Button id="cancelButton" text="Cancel" type="Transparent"
+                        press="onCancel" visible="false" />
+				</OverflowToolbar>
+			</headerToolbar>
+			<columns>
+				<Column
+					width="12em" id="productEditable" headerMenu="columnHeaderMenu">
+					<Text text="Product" />
+				</Column>
+				<Column
+					minScreenWidth="Tablet"
+					demandPopin="true">
+					<Text text="SupplierID" />
+				</Column>
+				<Column
+					minScreenWidth="Desktop"
+					demandPopin="true"
+					hAlign="Center">
+					<Text text="Discontinued" />
+				</Column>
+				<Column
+					hAlign="End">
+					<Text text="UnitPrice" />
+				</Column>
+			</columns>
+			<items>
+				<ColumnListItem vAlign="Middle">
+					<cells>
+						<ObjectIdentifier
+							title="{ProductName}"
+							text="{ProductID}"/>
+						<Text
+							text="{SupplierID}" />
+						<Text
+							text="{Discontinued}" />
+						<Text
+							text="{UnitPrice}" />
+					</cells>
+				</ColumnListItem>
+			</items>
+        </Table>
+		<footer>
+			<OverflowToolbar >
+				<ToolbarSpacer/>
+				<Button text="Order" press="onOrder"/>
+				<Button text="Go to next page" press="onPressNext"></Button>
+			</OverflowToolbar>
+		</footer>
+    </Page>
+</mvc:View>

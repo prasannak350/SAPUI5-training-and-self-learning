@@ -1,0 +1,212 @@
+{
+    "_version": "1.65.0",
+    "sap.app": {
+        "id": "com.sap.demokitmtable",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "0.0.1"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "resources": "resources.json",
+        "sourceTemplate": {
+            "id": "@sap/generator-fiori:basic",
+            "version": "1.16.3",
+            "toolsId": "7d7422c7-f505-4520-a9cb-717f05fc8bdf"
+        },
+        "dataSources": {
+            "mainService": {
+                "uri": "/northwind/northwind.svc/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "flexEnabled": false,
+        "dependencies": {
+            "minUI5Version": "1.132.1",
+            "libs": {
+                "sap.m": {},
+                "sap.ui.core": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "com.sap.demokitmtable.i18n.i18n"
+                }
+            },
+            "": {
+                "dataSource": "mainService",
+                "preload": true,
+                "settings": {}
+            }
+        },
+        "resources": {
+            "css": [
+                {
+                    "uri": "css/style.css"
+                }
+            ]
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "controlAggregation": "pages",
+                "controlId": "app",
+                "transition": "slide",
+                "type": "View",
+                "viewType": "XML",
+                "path": "com.sap.demokitmtable.view",
+                "async": true,
+                "viewPath": "com.sap.demokitmtable.view"
+            },
+            "routes": [
+                {
+                    "name": "RouteView1",
+                    "pattern": "",
+                    "target": [
+                        "TargetView1"
+                    ]
+                },
+                {
+                    "name": "RouteView2",
+                    "pattern": "2Table-ColumnWidth",
+                    "target": [
+                        "TargetView2"
+                    ]
+                },
+                {
+                    "name": "RouteView3",
+                    "pattern": "3Table-BreadCrumb",
+                    "target": [
+                        "TargetView3"
+                    ]
+                },
+                {
+                    "name": "RouteView4",
+                    "pattern": "4FixedVsAuto-Layout",
+                    "target": [
+                        "TargetView4"
+                    ]
+                },
+                {
+                    "name": "RouteView5",
+                    "pattern": "5Table-MergeCells",
+                    "target": [
+                        "TargetView5"
+                    ]
+                },
+                {
+                    "name": "RouteView6",
+                    "pattern": "6Table-ViewSettingsMenus",
+                    "target": [
+                        "TargetView6"
+                    ]
+                },
+                {
+                    "name": "RouteView7",
+                    "pattern": "7Table-Editable",
+                    "target": [
+                        "TargetView7"
+                    ]
+                },
+                {
+                    "name": "RouteView8",
+                    "pattern": "8ContextualWidth-Dynamic",
+                    "target": [
+                        "TargetView8"
+                    ]
+                },
+                {
+                    "name": "RouteView9",
+                    "pattern": "9ContextualWidth-Static",
+                    "target": [
+                        "TargetView9"
+                    ]
+                },
+                {
+                    "name": "RouteView10",
+                    "pattern": "10ItemNavigated",
+                    "target": [
+                        "TargetView10"
+                    ]
+                }
+            ],
+            "targets": {
+                "TargetView1": {
+                    "id": "1Table-colummns",
+                    "name": "1Table-colummns"
+                },
+                "TargetView2": {
+                    "id": "2Table-ColumnWidth",
+                    "name": "2Table-ColumnWidth"
+                },
+                "TargetView3": {
+                    "id": "3Table-BreadCrumb",
+                    "name": "3Table-BreadCrumb"
+                },
+                "TargetView4": {
+                    "id": "4FixedVsAuto-Layout",
+                    "name": "4FixedVsAuto-Layout"
+                },
+                "TargetView5": {
+                    "id": "5Table-MergeCells",
+                    "name": "5Table-MergeCells"
+                },
+                "TargetView6": {
+                    "id": "6Table-ViewSettingsMenus",
+                    "name": "6Table-ViewSettingsMenus"
+                },
+                "TargetView7": {
+                    "id": "7Table-Editable",
+                    "name": "7Table-Editable"
+                },
+                "TargetView8": {
+                    "id": "8ContextualWidth-Dynamic",
+                    "name": "8ContextualWidth-Dynamic"
+                },
+                "TargetView9": {
+                    "id": "9ContextualWidth-Static",
+                    "name": "9ContextualWidth-Static"
+                },
+                "TargetView10": {
+                    "id": "10ItemNavigated",
+                    "name": "10ItemNavigated"
+                }
+            }
+        },
+        "rootView": {
+            "viewName": "com.sap.demokitmtable.view.App",
+            "type": "XML",
+            "id": "App"
+        }
+    }
+}

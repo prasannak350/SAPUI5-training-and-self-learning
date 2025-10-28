@@ -1,0 +1,42 @@
+<mvc:View controllerName="com.sap.demokitmtable.controller.5Table-MergeCells"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m" xmlns:core="sap.ui.core">
+    <Page id="MergeCells" title="Merge Cells" showNavButton="true" navButtonPress="onNavBack">
+        <Table id="idMergeCellsTable" items="{ path: '/Invoices', sorter: { path: 'ShipName'} }">
+			<columns>
+				<Column mergeDuplicates="true">
+					<Text text="Ship Name" />
+				</Column>
+				<Column mergeDuplicates="true">
+					<Text text="Product" />
+				</Column>
+				<Column minScreenWidth="Tablet" demandPopin="true" hAlign="End">
+					<Text text="RequiredDate" />
+				</Column>
+				<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">
+					<Text text="Quantity" />
+				</Column>
+				<Column hAlign="End">
+					<Text text="UnitPrice" />
+				</Column>
+			</columns>
+			<items>
+				<ColumnListItem vAlign="Middle">
+					<cells>
+						<Text text="{ShipName}" />
+						<ObjectIdentifier title="{ProductName}" text="{ProductID}" />
+						<Text text="{RequiredDate}"/>
+						<Text text="{Quantity}"/>
+						<Text text="{UnitPrice}"/>
+					</cells>
+				</ColumnListItem>
+			</items>
+        </Table>
+		<footer>
+			<OverflowToolbar >
+				<ToolbarSpacer/>
+				<Button text="Go to next page" press="onPressNext"></Button>
+			</OverflowToolbar>
+		</footer>
+    </Page>
+</mvc:View>

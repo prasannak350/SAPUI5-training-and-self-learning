@@ -1,0 +1,63 @@
+<mvc:View controllerName="com.sap.demokitmtable.controller.2Table-ColumnWidth"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m" xmlns:core="sap.ui.core">
+    <Page id="ColumnWidth" title="Table-ColumnWidth" showNavButton="true" navButtonPress="onNavBack">
+        <MessageStrip text="Set the width of at least one column to auto or the fixedLayout property of the table to Strict." type="Success" class="sapUiSmallMargin" showIcon="true"/>
+        <Table id="idCategoryTable" mode="MultiSelect" items="{ path: '/Categories'}" columns="{ path: 'clone>/'}">
+            <headerToolbar>
+				<OverflowToolbar>
+					<content>
+						<Title text="Products (Correct Usage)" level="H2"/>
+						<ToolbarSpacer />
+						<CheckBox text="Strict Layout" select="onCheckBoxSelect"/>
+					</content>
+				</OverflowToolbar>
+			</headerToolbar>
+            <columns>
+                <Column width="{clone>width}" styleClass="{clone>styleClass}" demandPopin="{clone>demandPopin}" minScreenWidth="{clone>minScreenWidth}" popinDisplay="WithoutHeader">
+                    <Input value="{clone>width}" description="{clone>header}"/>
+                </Column>
+            </columns>
+            <items>
+                <ColumnListItem vAlign="Middle" type="Navigation">
+                    <cells>
+                        <Text text="{CategoryName}" wrapping="false" />
+                        <Text text="{CategoryID}" wrapping="false"/>
+                        <Text text="{Description}" wrapping="false" />
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
+        <MessageStrip text="Do not try to give percent width to all columns even if it reaches 100% total column width." type="Error" class="sapUiLargeMarginTop sapUiSmallMargin" showIcon="true"/>
+        <Table mode="MultiSelect" items="{ path: '/Categories'}" columns="{ path: 'columns>/'}">
+            <headerToolbar>
+				<OverflowToolbar>
+					<content>
+						<Title text="Products (Wrong Usage)" level="H2"/>
+						<ToolbarSpacer />
+					</content>
+				</OverflowToolbar>
+			</headerToolbar>
+            <columns>
+                <Column width="{columns>width}" styleClass="{columns>styleClass}" demandPopin="{columns>demandPopin}" minScreenWidth="{columns>minScreenWidth}" popinDisplay="WithoutHeader">
+                    <Input value="{columns>width}" description="{columns>header}"/>
+                </Column>
+            </columns>
+            <items>
+                <ColumnListItem vAlign="Middle" type="Navigation">
+                    <cells>
+                        <Text text="{CategoryName}" wrapping="false" />
+                        <Text text="{CategoryID}" wrapping="false"/>
+                        <Text text="{Description}" wrapping="false" />
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
+        <footer>
+			<OverflowToolbar >
+				<ToolbarSpacer/>
+				<Button text="Go to next page" press="onPressNext"></Button>
+			</OverflowToolbar>
+		</footer>
+    </Page>
+</mvc:View>

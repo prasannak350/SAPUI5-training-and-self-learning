@@ -1,0 +1,54 @@
+<mvc:View controllerName="com.sap.demokitmtable.controller.10ItemNavigated"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout">
+    <Page >
+        <content>
+            <Table id="idItemNavigatedTable" headerText="Products (Click on an item to set as navigated)" items="{path: '/Products'}" growing="true" growingThreshold="10">
+                <columns>
+                    <Column>
+                        <Text text="Product" />
+                    </Column>
+                    <Column
+                        minScreenWidth="phone"
+                        demandPopin="true">
+                        <Text text="SupplierID" />
+                    </Column>
+                    <Column
+                        minScreenWidth="tablet"
+                        demandPopin="true"
+                        hAlign="Center">
+                        <Text text="Discontinued" />
+                    </Column>
+                    <Column
+                        minScreenWidth="phone"
+                        demandPopin="true"
+                        hAlign="End">
+                        <Text text="UnitPrice" />
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem type="Active" vAlign="Middle" navigated="{parts: ['settings>/navigatedItem','ProductId'], formatter: '.isNavigated'}" press="onPress">
+                        <cells>
+                            <ObjectIdentifier
+                                title="{ProductName}"
+                                text="{ProductID}"/>
+                            <Text
+                                text="{SupplierID}" />
+                            <Text
+                                text="{Discontinued}" />
+                            <Text
+                                text="{UnitPrice}" />
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </content>
+        <footer>
+			<OverflowToolbar >
+                <Button text="Back" press="onNavBack"/>
+				<ToolbarSpacer/>
+				<Button text="Go to next page" press="onPressNext"></Button>
+			</OverflowToolbar>
+		</footer>
+    </Page>
+</mvc:View>

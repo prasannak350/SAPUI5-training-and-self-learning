@@ -1,0 +1,42 @@
+<core:FragmentDefinition
+	xmlns:core="sap.ui.core"
+	xmlns="sap.m">
+	<ColumnListItem vAlign="Middle"
+		type="{
+			path: 'ProductId',
+			formatter: 'com.sap.demokitmtable.util.Formatter.listItemType'
+		}"
+		selected="{
+			path: 'ProductId',
+			formatter: 'com.sap.demokitmtable.util.Formatter.isProductSelected'
+		}">
+		<cells>
+			<ObjectIdentifier
+				title="{Name}"
+				text="{ProductId}" />
+			<Text
+				text="{
+					parts: [
+						{ path: 'Width' },
+						{ path: 'Depth' },
+						{ path: 'Height' },
+						{ path: 'DimUnit' }
+					],
+					formatter: 'com.sap.demokitmtable.util.Formatter.dimensions'
+				}" />
+			<ObjectNumber
+				number="{WeightMeasure}"
+				unit="{WeightUnit}"
+				state="{
+					path: 'WeightMeasure',
+					formatter: 'com.sap.demokitmtable.util.Formatter.weightState'
+				}" />
+			<ObjectNumber
+				number="{
+					path: 'Price',
+					formatter: 'com.sap.demokitmtable.util.Formatter.round2DP'
+				}"
+				unit="{CurrencyCode}" />
+		</cells>
+	</ColumnListItem>
+</core:FragmentDefinition>

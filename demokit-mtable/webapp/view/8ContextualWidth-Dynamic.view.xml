@@ -1,0 +1,109 @@
+<mvc:View controllerName="com.sap.demokitmtable.controller.8ContextualWidth-Dynamic"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout">
+    <Page >
+        <content>
+            <MessageStrip
+                id="idMessageStrip"
+                text="Move the splitter to see the container based popin behaviour with dynamic width."
+                type="Success"
+                showIcon="true"
+                showCloseButton="true"
+                class="sapUiMediumMarginBottom">
+            </MessageStrip>
+            <l:ResponsiveSplitter height="100%">
+                <l:PaneContainer>
+                    <l:SplitPane requiredParentWidth="500">
+                        <Table id="idContextualWidthTable" contextualWidth="Auto" popinLayout="GridSmall" headerText="FirstProductsTable" items="{path: '/Products'}" growing="true" growingThreshold="10">
+                            <columns>
+                                <Column>
+                                    <Text text="Product" />
+                                </Column>
+                                <Column
+                                    minScreenWidth="phone"
+                                    demandPopin="true">
+                                    <Text text="SupplierID" />
+                                </Column>
+                                <Column
+                                    minScreenWidth="tablet"
+                                    demandPopin="true"
+                                    hAlign="Center">
+                                    <Text text="Discontinued" />
+                                </Column>
+                                <Column
+                                    minScreenWidth="phone"
+                                    demandPopin="true"
+                                    hAlign="End">
+                                    <Text text="UnitPrice" />
+                                </Column>
+                            </columns>
+                            <items>
+                                <ColumnListItem>
+                                    <cells>
+                                        <ObjectIdentifier
+                                            title="{ProductName}"
+                                            text="{ProductID}"/>
+                                        <Text
+                                            text="{SupplierID}" />
+                                        <Text
+                                            text="{Discontinued}" />
+                                        <Text
+                                            text="{UnitPrice}" />
+                                    </cells>
+                                </ColumnListItem>
+                            </items>
+                        </Table>
+                    </l:SplitPane>
+                    <l:SplitPane requiredParentWidth="400">
+                        <Table id="idContextualWidthTable1" contextualWidth="Auto" popinLayout="GridSmall" headerText="SecondProductsTable" items="{path: '/Products'}" growing="true" growingThreshold="10">
+                            <columns>
+                                <Column>
+                                    <Text text="Product" />
+                                </Column>
+                                <Column
+                                    minScreenWidth="phone"
+                                    demandPopin="true">
+                                    <Text text="SupplierID" />
+                                </Column>
+                                <Column
+                                    minScreenWidth="tablet"
+                                    demandPopin="true"
+                                    hAlign="Center">
+                                    <Text text="Discontinued" />
+                                </Column>
+                                <Column
+                                    minScreenWidth="phone"
+                                    demandPopin="true"
+                                    hAlign="End">
+                                    <Text text="UnitPrice" />
+                                </Column>
+                            </columns>
+                            <items>
+                                <ColumnListItem>
+                                    <cells>
+                                        <ObjectIdentifier
+                                            title="{ProductName}"
+                                            text="{ProductID}"/>
+                                        <Text
+                                            text="{SupplierID}" />
+                                        <Text
+                                            text="{Discontinued}" />
+                                        <Text
+                                            text="{UnitPrice}" />
+                                    </cells>
+                                </ColumnListItem>
+                            </items>
+                        </Table>
+                    </l:SplitPane>
+                </l:PaneContainer>
+            </l:ResponsiveSplitter>
+        </content>
+        <footer>
+			<OverflowToolbar >
+                <Button text="Back" press="onNavBack"/>
+				<ToolbarSpacer/>
+				<Button text="Go to next page" press="onPressNext"></Button>
+			</OverflowToolbar>
+		</footer>
+    </Page>
+</mvc:View>

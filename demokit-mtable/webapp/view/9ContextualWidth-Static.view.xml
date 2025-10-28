@@ -1,0 +1,66 @@
+<mvc:View controllerName="com.sap.demokitmtable.controller.9ContextualWidth-Static"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout">
+    <Page >
+        <content>
+            <MessageStrip
+                text="Table is initially setting contexualWidth to 500px. Press button to change the ContextualWidth."
+                type="Success"
+                showIcon="true"
+                showCloseButton="true"
+                class="sapUiMediumMarginBottom">
+            </MessageStrip>
+            <OverflowToolbar>
+				<Button text="change contexualWidth to 100px" press="onPress"/>
+                <ToolbarSpacer/>
+                <Button text="set contexualWidth back to 500px" press="onSetBackWidth"/>
+			</OverflowToolbar>
+            <Table id="idContextualWidthStaticTable" contextualWidth="500px" popinLayout="GridSmall" headerText="ProductsTable" items="{path: '/Products'}" growing="true" growingThreshold="10">
+                <columns>
+                    <Column>
+                        <Text text="Product" />
+                    </Column>
+                    <Column
+                        minScreenWidth="phone"
+                        demandPopin="true">
+                        <Text text="SupplierID" />
+                    </Column>
+                    <Column
+                        minScreenWidth="tablet"
+                        demandPopin="true"
+                        hAlign="Center">
+                        <Text text="Discontinued" />
+                    </Column>
+                    <Column
+                        minScreenWidth="phone"
+                        demandPopin="true"
+                        hAlign="End">
+                        <Text text="UnitPrice" />
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem>
+                        <cells>
+                            <ObjectIdentifier
+                                title="{ProductName}"
+                                text="{ProductID}"/>
+                            <Text
+                                text="{SupplierID}" />
+                            <Text
+                                text="{Discontinued}" />
+                            <Text
+                                text="{UnitPrice}" />
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </content>
+        <footer>
+			<OverflowToolbar >
+                <Button text="Back" press="onNavBack"/>
+				<ToolbarSpacer/>
+				<Button text="Go to next page" press="onPressNext"></Button>
+			</OverflowToolbar>
+		</footer>
+    </Page>
+</mvc:View>
