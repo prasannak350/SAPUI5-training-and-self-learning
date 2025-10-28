@@ -1,0 +1,75 @@
+<mvc:View controllerName="com.sap.uitablewithjsondata.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:t="sap.ui.table">
+    <Page id="page" title="{i18n>title}">
+        <content>
+            <t:Table rows="{/empTable}" visibleRowCount="5" selectionMode="Single">
+                <t:columns>
+                    <t:Column>
+                        <t:label>
+                            <Label text="Emp Id" />
+                        </t:label>
+                        <t:template>
+                            <Text text="{empId}"></Text>
+                        </t:template>
+                    </t:Column>
+                    <t:Column label="Emp Name">
+                        <t:template>
+                            <Input value="{empName}" />
+                        </t:template>
+                    </t:Column>
+                    <t:Column label="Salary">
+                        <t:template>
+                            <Text text="{salary} {currency}"></Text>
+                        </t:template>
+                    </t:Column>
+                    <t:Column label="Smoker">
+                        <t:template>
+                            <CheckBox selected="{smoker}"></CheckBox>
+                        </t:template>
+                    </t:Column>
+
+                    <t:Column label="Gender">
+                        <t:template>
+                            <Image src="{gender}" width="40px" height="40px"></Image>
+                        </t:template>
+                    </t:Column>
+
+                    <t:Column label="Rating">
+                        <t:template>
+                            <RatingIndicator value="{rating}"></RatingIndicator>
+                        </t:template>
+                    </t:Column>
+
+                    <t:Column label="Marital Status">
+                        <t:template>
+                            <Select selectedKey="{mStatus}">
+                                <items>
+                                    <core:Item key="S" text="Single" />
+                                    <core:Item key="M" text="Married" />
+                                </items>
+                            </Select>
+                        </t:template>
+                    </t:Column>
+                </t:columns>
+            </t:Table>
+            <f:SimpleForm id="idSimpleForm" editable="true">
+                <f:content>
+                    <Label text="Emp Id"></Label>
+                    <Input id="idEmpId" width="25%" value="{/empStr/empId}"/>
+                    <Label text="Emp Name"></Label>
+                    <Input id="idEmpName" width="40%" value="{path: '/empStr/empName'}"/>
+                    <Label text="Salary"></Label>
+                    <Input id="idSalary" width="35%" enabled="{= ${/empStr/empName} === 'Anubhav' ? false : true }"/>
+                    <Label text="Currency"></Label>
+                    <Input id="idCurrency" width="30%"/>
+                    <Label text="Smoker"></Label>
+                    <CheckBox id="idSmoker" selected="{/empStr/smoker}"></CheckBox>
+                </f:content>
+            </f:SimpleForm>
+            <Button text="Set Value" icon="sap-icon://biometric-thumb" press="onSetValue"></Button>
+            <Button text="Get Value" icon="sap-icon://change" press="onGetValue"></Button>
+            <Button text="Flip Flop" icon="sap-icon://refresh" press="onFlipFlop"></Button>
+        </content>
+    </Page>
+</mvc:View>

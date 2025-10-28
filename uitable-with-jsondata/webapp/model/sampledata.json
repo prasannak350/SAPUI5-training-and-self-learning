@@ -1,0 +1,25 @@
+{
+    "empStr": {
+                "empId": 8080,
+                "empName": "Tirian",
+                "salary": 15000,
+                "currency": "USD",
+                "smoker": true
+    },
+    "empTable": [
+                    {
+                        "empId": 8000,
+                        "empName": "Sarsi",
+                        "salary": 36000,
+                        "currency": "EUR",
+                        "smoker": false
+                    },
+                    {
+                        "empId": 8001,
+                        "empName": "John Snow",
+                        "salary": 1111,
+                        "currency": "AED",
+                        "smoker": true
+                    }
+    ]
+}
