@@ -1,0 +1,81 @@
+{
+    "empStr": {
+                "empId": 3001,
+                "empName": "Anubhav",
+                "salary": 9999,
+                "currency": "USD",
+                "smoker": true
+    },
+    "empTable": [
+                    {
+                        "empId": 5000,
+                        "empName": "Ananya",
+                        "salary": 12000,
+                        "currency": "EUR",
+                        "smoker": false,
+                        "gender": "https://cdn-icons-png.flaticon.com/512/4042/4042422.png",
+                        "rating": 5,
+                        "mStatus": "S"
+                    },
+                    {
+                        "empId": 5002,
+                        "empName": "Ravi",
+                        "salary": 35000,
+                        "currency": "AED",
+                        "smoker": true,
+                        "gender": "https://cdn-icons-png.flaticon.com/512/1724/1724930.png",
+                        "rating": 3,
+                        "mStatus": "M"
+                    },
+                    {
+                        "empId": 5003,
+                        "empName": "Rebecca",
+                        "salary": 36000,
+                        "currency": "SAD",
+                        "smoker": true,
+                        "gender": "https://cdn-icons-png.flaticon.com/512/4042/4042422.png",
+                        "rating": 2,
+                        "mStatus": "M"
+                    },
+                    {
+                        "empId": 5004,
+                        "empName": "Luliana",
+                        "salary": 61000,
+                        "currency": "EUR",
+                        "smoker": false,
+                        "gender": "https://cdn-icons-png.flaticon.com/512/4042/4042422.png",
+                        "rating": 4,
+                        "mStatus": "S"
+                    },
+                    {
+                        "empId": 5005,
+                        "empName": "Mathias",
+                        "salary": 12000,
+                        "currency": "USD",
+                        "smoker": true,
+                        "gender": "https://cdn-icons-png.flaticon.com/512/1724/1724930.png",
+                        "rating": 3,
+                        "mStatus": "S"
+                    },
+                    {
+                        "empId": 5006,
+                        "empName": "Sonia",
+                        "salary": 5555,
+                        "currency": "EUR",
+                        "smoker": true,
+                        "gender": "https://cdn-icons-png.flaticon.com/512/4042/4042422.png",
+                        "rating": 4,
+                        "mStatus": "M"
+                    },
+                    {
+                        "empId": 5007,
+                        "empName": "Abramo",
+                        "salary": 36900,
+                        "currency": "EUR",
+                        "smoker": true,
+                        "gender": "https://cdn-icons-png.flaticon.com/512/1724/1724930.png",
+                        "rating": 3,
+                        "mStatus": "S"
+                    }
+    ]
+}

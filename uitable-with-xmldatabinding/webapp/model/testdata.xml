@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<data>
+    <empStr></empStr>
+    <empTable>
+        <rows>
+            <empId>10001</empId>
+            <empName>Johney</empName>
+            <salary>5000</salary>
+            <currency>EUR</currency>
+            <gender>https://cdn-icons-png.flaticon.com/512/3233/3233508.png</gender>
+            <smoker>true</smoker>
+            <mStat>S</mStat>
+            <rating>4</rating>
+        </rows>
+        <rows>
+            <empId>10002</empId>
+            <empName>Rohit</empName>
+            <salary>1500</salary>
+            <currency>AED</currency>
+            <gender>https://cdn-icons-png.flaticon.com/512/3233/3233508.png</gender>
+            <smoker>false</smoker>
+            <mStat>M</mStat>
+            <rating>3</rating>
+        </rows>
+        <rows>
+            <empId>100003</empId>
+            <empName>Stevia</empName>
+            <salary>30000</salary>
+            <currency>USD</currency>
+            <gender>https://cdn-icons-png.flaticon.com/512/6833/6833591.png</gender>
+            <smoker>true</smoker>
+            <mStat>M</mStat>
+            <rating>5</rating>
+        </rows>
+        <rows>
+            <empId>100004</empId>
+            <empName>Perry</empName>
+            <salary>5555</salary>
+            <currency>JPY</currency>
+            <gender>https://cdn-icons-png.flaticon.com/512/6833/6833591.png</gender>
+            <smoker>false</smoker>
+            <mStat>S</mStat>
+            <rating>3</rating>
+        </rows>
+
+    </empTable>
+</data>
+
