@@ -1,0 +1,25 @@
+<mvc:View controllerName="com.sap.demokitgenerictile.controller.2MonitorTile"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m" xmlns:f="sap.ui.layout.form">
+    <Page id="monitorTile" title="{i18n>title}">
+        <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Cumulative Totals" subheader="Expenses" press="press">
+            <TileContent unit="Unit" footer="Footer Text">
+                <NumericContent value="1762" icon="sap-icon://line-charts" withMargin="false" />
+            </TileContent>
+        </GenericTile>
+
+        <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Cumulative Totals" subheader="Expenses" press="press">
+            <TileContent unit="Unit" footer="Footer Text">
+                <NumericContent value="12" withMargin="false" />
+            </TileContent>
+        </GenericTile>
+
+        <footer>
+            <OverflowToolbar >
+                <Button text="Back" press="onPressBack"></Button>
+                <ToolbarSpacer />
+                <Button text="Go to Next Page" press="onPressNext"></Button>
+            </OverflowToolbar>
+        </footer>
+    </Page>
+</mvc:View>
