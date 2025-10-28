@@ -1,0 +1,69 @@
+<mvc:View
+    controllerName="com.sap.draganddrop.controller.List-DragAndDrop"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:dnd="sap.ui.core.dnd" >
+
+    <Page title="Drag &amp; Drop Example">
+        <content>
+            <List id="list1" headerText="Available Items" mode="SingleSelectMaster"
+                  items="{/items}">
+                <items>
+                    <StandardListItem title="{name}" description="{desc}" />
+                </items>
+
+                <dragDropConfig>
+                    <dnd:DragDropInfo
+                        sourceAggregation="items"
+                        targetAggregation="items"
+                        drop="onDrop"/>
+                </dragDropConfig>
+            </List>
+        </content>
+
+        <Panel>
+        </Panel>
+        <!-- not working -->
+        <Panel headerText="Drag to other list Example">
+            <content>
+                <VBox class="sapUiSmallMargin" renderType="Bare">
+                    
+                    <!-- Source List -->
+                    <List id="sourceList" headerText="Available Items" mode="SingleSelectMaster"
+                        items="{/items}">
+                        <items>
+                            <StandardListItem title="{name}" description="{desc}" />
+                        </items>
+
+                        <dragDropConfig>
+                            <dnd:DragDropInfo
+                                sourceAggregation="items" targetAggregation= "items" dropPosition="Between" dropLayout="Vertical" drop="onDropToList"/>
+                        </dragDropConfig>
+                    </List>
+
+                    <!-- Target List -->
+                    <List id="targetList" headerText="Drag and drop items here" mode="SingleSelectMaster"
+                        items="{TargetModel>/items}">
+                        <items>
+                            <StandardListItem title="{TargetModel>name}" description="{TargetModel>desc}" />
+                        </items>
+
+                        <dragDropConfig>
+                            <dnd:DragDropInfo
+                                sourceAggregation= "items" targetAggregation= "items" dropPosition="Between" dropLayout="Horizontal" drop="onDropToList"/>
+                        </dragDropConfig>
+                    </List>
+
+                </VBox>
+            </content>
+        </Panel>
+        <footer>
+            <OverflowToolbar >
+                <Toolbar >
+                    <ToolbarSpacer ></ToolbarSpacer>
+                    <Button text="Go to next page" press="onPressNext"></Button>
+                </Toolbar>
+            </OverflowToolbar>
+        </footer>
+    </Page>
+</mvc:View>
